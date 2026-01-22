@@ -82,8 +82,10 @@
             <div class="chat-ai">Bolo bhai, kaunsa topic?</div>
         </div>
         <div class="input-bar">
-            <input placeholder="Ask study doubt..."
-            onkeydown="if(event.key==='Enter'){sendMessage('student')}">
+  <input type="text" placeholder="Ask your study question..."
+   onkeydown="if(event.key==='Enter'){sendMessage('student')}">
+  <button onclick="sendMessage('student')">➤</button>
+        </div>
         </div>
     </div>
 
