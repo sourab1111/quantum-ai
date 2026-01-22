@@ -9,20 +9,23 @@
 
 <body>
 
-<!-- ================= TOP BAR ================= -->
+<!-- ===== TOP BAR PRO ===== -->
 <header class="topbar">
+
     <div class="top-left">
         <span class="menu-btn" onclick="toggleSidebar()">☰</span>
-        <span class="brand">⚡ Quantum AI</span>
-        <span class="sub">Neural Command Center</span>
+        <div>
+            <div class="brand">⚡ QUANTUM AI</div>
+            <div class="sub">Neural Command Center</div>
+        </div>
     </div>
 
     <div class="top-right">
-        <span class="status">● Online</span>
+        <div class="status">● Online</div>
+        <span id="topBackBtn" onclick="showSection('home')" style="display:none">⬅</span>
         <span onclick="toggleNotify()">🔔</span>
-        <span onclick="showSection('history')">📜</span>
-        <span id="topBackBtn" onclick="goHome()">⬅</span>
     </div>
+
 </header>
 
 <!-- ================= SIDEBAR ================= -->
