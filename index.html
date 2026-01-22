@@ -18,7 +18,7 @@
         <span onclick="toggleNotify()">🔔</span>
         <span onclick="showSection('home')">Home</span>
         <span onclick="showSection('history')">History</span>
-        <span class="menu-btn" onclick="toggleSidebar()">☰</span>
+        <span onclick="toggleSidebar()">☰</span>
         <span class="small-back" onclick="goHome()">⬅</span>
     </div>
 </header>
@@ -30,7 +30,6 @@
         <li onclick="showSection('creator')">🎨 Creator Hub</li>
         <li onclick="showSection('insight')">📊 Insight Hub</li>
         <li onclick="showSection('lab')">🧪 Lab Hub</li>
-        <li onclick="showSection('history')">📜 History</li>
     </ul>
 </aside>
 
@@ -41,18 +40,10 @@
 <section id="home" class="hub active">
     <h2>Select a hub to begin your journey</h2>
     <div class="hub-cards">
-        <div class="hub-card" onclick="showSection('student')">
-            🎓<br>Student Hub
-        </div>
-        <div class="hub-card" onclick="showSection('creator')">
-            🎨<br>Creator Hub
-        </div>
-        <div class="hub-card" onclick="showSection('insight')">
-            📊<br>Insight Hub
-        </div>
-        <div class="hub-card" onclick="showSection('lab')">
-            🧪<br>Lab Hub
-        </div>
+        <div class="hub-card" onclick="showSection('student')">🎓 Student Hub</div>
+        <div class="hub-card" onclick="showSection('creator')">🎨 Creator Hub</div>
+        <div class="hub-card" onclick="showSection('insight')">📊 Insight Hub</div>
+        <div class="hub-card" onclick="showSection('lab')">🧪 Lab Hub</div>
     </div>
 </section>
 
@@ -66,10 +57,11 @@
         </div>
         <div class="chat-container" id="student-chat">
             <div class="chat-ai">Hi! Bataa, kya padhna hai aaj?</div>
+            <div class="typing">
+                <span></span><span></span><span></span>
+            </div>
         </div>
-        <div class="typing"><span></span><span></span><span></span></div>
-        <input type="text" placeholder="Ask your study question..." 
-               onkeydown="if(event.key==='Enter'){sendMessage('student')}">
+        <input type="text" placeholder="Ask your study question..." onkeydown="if(event.key==='Enter'){sendMessage('student')}">
     </div>
 </section>
 
@@ -83,10 +75,11 @@
         </div>
         <div class="chat-container" id="creator-chat">
             <div class="chat-ai">Hey Creator! Kaunsa content banana hai aaj?</div>
+            <div class="typing">
+                <span></span><span></span><span></span>
+            </div>
         </div>
-        <div class="typing"><span></span><span></span><span></span></div>
-        <input type="text" placeholder="Type your creative idea..." 
-               onkeydown="if(event.key==='Enter'){sendMessage('creator')}">
+        <input type="text" placeholder="Type your creative idea..." onkeydown="if(event.key==='Enter'){sendMessage('creator')}">
     </div>
 </section>
 
@@ -100,10 +93,11 @@
         </div>
         <div class="chat-container" id="insight-chat">
             <div class="chat-ai">Insights ready! Kya analyse karna hai?</div>
+            <div class="typing">
+                <span></span><span></span><span></span>
+            </div>
         </div>
-        <div class="typing"><span></span><span></span><span></span></div>
-        <input type="text" placeholder="Type your question..." 
-               onkeydown="if(event.key==='Enter'){sendMessage('insight')}">
+        <input type="text" placeholder="Type your question..." onkeydown="if(event.key==='Enter'){sendMessage('insight')}">
     </div>
 </section>
 
@@ -117,10 +111,11 @@
         </div>
         <div class="chat-container" id="lab-chat">
             <div class="chat-ai">Lab ready! Experiment start karna hai?</div>
+            <div class="typing">
+                <span></span><span></span><span></span>
+            </div>
         </div>
-        <div class="typing"><span></span><span></span><span></span></div>
-        <input type="text" placeholder="Type your experiment..." 
-               onkeydown="if(event.key==='Enter'){sendMessage('lab')}">
+        <input type="text" placeholder="Type your experiment..." onkeydown="if(event.key==='Enter'){sendMessage('lab')}">
     </div>
 </section>
 
@@ -128,16 +123,14 @@
 <section id="history" class="hub">
     <button class="back-btn" onclick="goHome()">⬅ Back</button>
     <div class="panel">
-        <h3>📜 History</h3>
-        <div id="history-log">
-            <p>No history yet… start using Quantum AI!</p>
-        </div>
+        <h3>History Logs</h3>
+        <div id="history-content">No past chats yet...</div>
     </div>
 </section>
 
 </main>
 
-<!-- ===== MOBILE NAV ===== -->
+<!-- MOBILE NAV -->
 <nav class="mobile-nav">
     <span onclick="showSection('student')">🎓</span>
     <span onclick="showSection('creator')">🎨</span>
@@ -145,7 +138,7 @@
     <span onclick="showSection('lab')">🧪</span>
 </nav>
 
-<!-- ===== NOTIFICATION PANEL ===== -->
+<!-- Notification Panel -->
 <div id="notifyPanel">
     <h3>System Alerts</h3>
     <p>⚡ Quantum Core synced successfully</p>
@@ -155,4 +148,4 @@
 
 <script src="script.js"></script>
 </body>
-    </html>
+            </html>
