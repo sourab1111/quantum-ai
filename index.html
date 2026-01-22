@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quantum AI</title>
+<title>Quantum AI - Ultra Pro Dashboard</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,70 +15,95 @@
     <div class="quick-access">
         <span onclick="showSection('home')">Home</span>
         <span onclick="showSection('history')">History</span>
+        <span onclick="toggleSidebar()">Menu</span>
     </div>
-    <div class="menu-btn" onclick="toggleSidebar()">☰</div>
 </header>
 
-<!-- Sidebar -->
+<!-- Sidebar / Multi-level Menu -->
 <aside id="sidebar">
+    <div class="sidebar-header">Hubs</div>
     <ul>
         <li onclick="showSection('student')">Student Hub</li>
         <li onclick="showSection('creator')">Creator Hub</li>
         <li onclick="showSection('insight')">Insight Hub</li>
         <li onclick="showSection('lab')">Lab Hub</li>
     </ul>
+    <div class="sidebar-footer">© 2026 Quantum AI</div>
 </aside>
 
 <!-- Floating Back Button -->
 <div id="back-btn" onclick="showSection('home')">⬅ Back</div>
 
-<!-- Main Sections -->
+<!-- Main Content -->
 <main>
+
     <!-- Home -->
     <section id="home" class="active-section">
-        <h1>Welcome to Quantum AI</h1>
-        <p>Select a hub to start.</p>
+        <div class="panel glass">
+            <h1>Welcome to Quantum AI</h1>
+            <p>Select a hub to begin your journey.</p>
+            <div class="hub-cards">
+                <div class="hub-card" onclick="showSection('student')">Student Hub</div>
+                <div class="hub-card" onclick="showSection('creator')">Creator Hub</div>
+                <div class="hub-card" onclick="showSection('insight')">Insight Hub</div>
+                <div class="hub-card" onclick="showSection('lab')">Lab Hub</div>
+            </div>
+        </div>
     </section>
 
     <!-- History -->
     <section id="history">
-        <h1>History</h1>
-        <div class="history-list">No chats yet.</div>
+        <div class="panel glass">
+            <h1>History</h1>
+            <div class="history-list">
+                <p>No previous chats yet.</p>
+            </div>
+        </div>
     </section>
 
     <!-- Student Hub -->
     <section id="student">
-        <h1>Student Hub</h1>
-        <div class="chat-container">
-            <div class="chat-user">Hello AI!</div>
-            <div class="chat-ai">Hi! How can I assist your learning today?</div>
+        <div class="panel glass">
+            <h1>Student Hub</h1>
+            <div class="chat-container" id="student-chat">
+                <div class="chat-ai">Hi Student! How can I assist your learning today?</div>
+            </div>
+            <input type="text" placeholder="Type your message..." onkeydown="if(event.key==='Enter'){sendMessage('student')}" />
         </div>
-        <input type="text" placeholder="Type your message..." />
     </section>
 
     <!-- Creator Hub -->
     <section id="creator">
-        <h1>Creator Hub</h1>
-        <div class="chat-container">
-            <div class="chat-user">Hello AI!</div>
-            <div class="chat-ai">Hi Creator! Ready to make something amazing?</div>
+        <div class="panel glass">
+            <h1>Creator Hub</h1>
+            <div class="chat-container" id="creator-chat">
+                <div class="chat-ai">Hi Creator! Ready to make something amazing?</div>
+            </div>
+            <input type="text" placeholder="Type your prompt..." onkeydown="if(event.key==='Enter'){sendMessage('creator')}" />
         </div>
-        <input type="text" placeholder="Type your prompt..." />
     </section>
 
     <!-- Insight Hub -->
     <section id="insight">
-        <h1>Insight Hub</h1>
-        <p>AI insights will appear here.</p>
+        <div class="panel glass">
+            <h1>Insight Hub</h1>
+            <div class="chat-container" id="insight-chat">
+                <div class="chat-ai">Insights will appear here.</div>
+            </div>
+            <input type="text" placeholder="Ask AI for insights..." onkeydown="if(event.key==='Enter'){sendMessage('insight')}" />
+        </div>
     </section>
 
     <!-- Lab Hub -->
     <section id="lab">
-        <h1>Lab Hub</h1>
-        <p>Experiment and explore AI tools.</p>
+        <div class="panel glass">
+            <h1>Lab Hub</h1>
+            <p>Experiment and explore AI tools.</p>
+        </div>
     </section>
+
 </main>
 
 <script src="script.js"></script>
 </body>
-</html>
+                                                                              </html>
