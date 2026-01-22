@@ -9,12 +9,10 @@
 
 <body>
 
-<!-- ================= TOP BAR ================= -->
+<!-- ===== TOP BAR ===== -->
 <header>
     <div class="brand">⚡ QUANTUM AI</div>
-
     <div class="status">● Online</div>
-
     <div class="quick-access">
         <span onclick="showSection('home')">Home</span>
         <span onclick="showSection('history')">History</span>
@@ -22,8 +20,7 @@
     </div>
 </header>
 
-
-<!-- ================= SIDEBAR ================= -->
+<!-- ===== SIDEBAR ===== -->
 <aside id="sidebar">
     <ul>
         <li onclick="showSection('student')">🎓 Student Hub</li>
@@ -33,131 +30,116 @@
     </ul>
 </aside>
 
-
-<!-- ================= BACK BUTTON ================= -->
+<!-- ===== BACK BUTTON ===== -->
 <div id="back-btn" onclick="showSection('home')">⬅ Back</div>
 
-
-<!-- ================= MAIN WORKSPACE ================= -->
+<!-- ===== MAIN ===== -->
 <main>
 
-<!-- ========== HOME ========== -->
+<!-- HOME -->
 <section id="home" class="active-section">
     <div class="panel">
-
         <h1>Welcome to Quantum AI</h1>
-        <p class="subtext">Choose your workspace and start interacting with AI.</p>
+        <p>Select a hub to begin your journey.</p>
 
         <div class="hub-cards">
             <div class="hub-card student" onclick="showSection('student')">
                 <h2>Student Hub</h2>
                 <p>Study smart, AI ke saath.</p>
             </div>
-
             <div class="hub-card creator" onclick="showSection('creator')">
                 <h2>Creator Hub</h2>
-                <p>Content, ideas, scripts — sab kuch.</p>
+                <p>Content, ideas, scripts.</p>
             </div>
-
             <div class="hub-card insight" onclick="showSection('insight')">
                 <h2>Insight Hub</h2>
-                <p>Deep analysis & smart answers.</p>
+                <p>Deep analysis & answers.</p>
             </div>
-
             <div class="hub-card lab" onclick="showSection('lab')">
                 <h2>Lab Hub</h2>
                 <p>Experiment with AI tools.</p>
             </div>
         </div>
-
     </div>
 </section>
 
-
-<!-- ========== HISTORY ========== -->
+<!-- HISTORY -->
 <section id="history">
     <div class="panel">
-        <h1>Conversation History</h1>
-        <div class="history-list">
-            <p>No saved chats yet.</p>
-        </div>
+        <h1>History</h1>
+        <p>No saved chats yet.</p>
     </div>
 </section>
 
-
-<!-- ========== STUDENT HUB ========== -->
+<!-- STUDENT -->
 <section id="student">
     <div class="panel">
-
-        <h1>🎓 Student Hub</h1>
+        <div class="hub-header">
+            <span>🎓 Student Mode</span>
+            <button onclick="clearChat('student')">Clear</button>
+        </div>
 
         <div class="chat-container" id="student-chat">
             <div class="chat-ai">Hi! Batao, kya padhna hai aaj?</div>
         </div>
 
-        <input
-            type="text"
-            placeholder="Ask your study question..."
-            onkeydown="if(event.key==='Enter'){sendMessage('student')}"
-        >
-
+        <input type="text" placeholder="Ask your study question..."
+        onkeydown="if(event.key==='Enter'){sendMessage('student')}">
     </div>
 </section>
 
-
-<!-- ========== CREATOR HUB ========== -->
+<!-- CREATOR -->
 <section id="creator">
     <div class="panel">
-
-        <h1>🎨 Creator Hub</h1>
+        <div class="hub-header">
+            <span>🎨 Creator Mode</span>
+            <button onclick="clearChat('creator')">Clear</button>
+        </div>
 
         <div class="chat-container" id="creator-chat">
             <div class="chat-ai">Ready to create something amazing?</div>
         </div>
 
-        <input
-            type="text"
-            placeholder="Enter your creative prompt..."
-            onkeydown="if(event.key==='Enter'){sendMessage('creator')}"
-        >
-
+        <input type="text" placeholder="Enter creative prompt..."
+        onkeydown="if(event.key==='Enter'){sendMessage('creator')}">
     </div>
 </section>
 
-
-<!-- ========== INSIGHT HUB ========== -->
+<!-- INSIGHT -->
 <section id="insight">
     <div class="panel">
-
-        <h1>📊 Insight Hub</h1>
+        <div class="hub-header">
+            <span>📊 Insight Mode</span>
+            <button onclick="clearChat('insight')">Clear</button>
+        </div>
 
         <div class="chat-container" id="insight-chat">
             <div class="chat-ai">Ask anything for deep insights.</div>
         </div>
 
-        <input
-            type="text"
-            placeholder="Ask for analysis or explanation..."
-            onkeydown="if(event.key==='Enter'){sendMessage('insight')}"
-        >
-
+        <input type="text" placeholder="Ask for analysis..."
+        onkeydown="if(event.key==='Enter'){sendMessage('insight')}">
     </div>
 </section>
 
-
-<!-- ========== LAB HUB ========== -->
+<!-- LAB -->
 <section id="lab">
     <div class="panel">
-
         <h1>🧪 AI Lab</h1>
         <p>Advanced tools coming soon…</p>
-
     </div>
 </section>
 
 </main>
 
+<!-- MOBILE NAV -->
+<nav class="mobile-nav">
+    <span onclick="showSection('student')">🎓</span>
+    <span onclick="showSection('creator')">🎨</span>
+    <span onclick="showSection('insight')">📊</span>
+    <span onclick="showSection('lab')">🧪</span>
+</nav>
 
 <script src="script.js"></script>
 </body>
-                </html>
+</html>
