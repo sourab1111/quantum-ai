@@ -1,10 +1,24 @@
 const chat = document.getElementById("chat");
 const msgInput = document.getElementById("msgInput");
 
+const modes = document.querySelectorAll(".mode");
+const panels = document.querySelectorAll(".panel");
+
+// Sidebar mode switch
+modes.forEach(mode => {
+  mode.addEventListener("click", () => {
+    modes.forEach(m => m.classList.remove("active"));
+    panels.forEach(p => p.classList.remove("active"));
+
+    mode.classList.add("active");
+    document.getElementById(mode.dataset.mode + "Panel").classList.add("active");
+  });
+});
+
+// Chat functions
 function send() {
   const message = msgInput.value.trim();
   if (!message) return;
-
   addMsg(message, "user");
   msgInput.value = "";
 
@@ -22,4 +36,10 @@ function addMsg(text, type) {
   chat.appendChild(div);
   chat.scrollTop = chat.scrollHeight;
   return div;
+}
+
+// Image generation simulation
+function generateFakeImage() {
+  const imgPanel = document.querySelector(".image-preview");
+  imgPanel.innerText = "🖼️ Generated Image: AI Style #" + Math.floor(Math.random()*100);
 }
