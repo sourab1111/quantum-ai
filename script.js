@@ -160,4 +160,4 @@ async function generateImage() {
     thinking.textContent = "Quantum AI: Image generation failed.";
     console.error(err);
   }
-    }      
+    }    
