@@ -9,36 +9,25 @@
 
 <body>
 
-<!-- ===== TOP BAR PRO ===== -->
-<header class="topbar">
+<!-- ===== PRO MINIMAL HEADER ===== -->
+<header class="app-header">
 
-    <div class="top-left">
-        <span class="menu-btn" onclick="toggleSidebar()">☰</span>
-        <div>
-            <div class="brand">⚡ QUANTUM AI</div>
-            <div class="sub">Neural Command Center</div>
-        </div>
-    </div>
+  <span class="menu-btn" onclick="toggleSidebar()">☰</span>
 
-    <div class="top-right">
-        <div class="status">● Online</div>
-        <span id="topBackBtn" onclick="showSection('home')" style="display:none">⬅</span>
-        <span onclick="toggleNotify()">🔔</span>
-    </div>
+  <div class="app-brand">Quantum AI</div>
 
 </header>
-
 <!-- ================= SIDEBAR ================= -->
 <aside id="sidebar">
-    <h3>Control Deck</h3>
-    <ul>
-        <li onclick="showSection('home')">🏠 Home</li>
-        <li onclick="showSection('student')">🎓 Student Hub</li>
-        <li onclick="showSection('creator')">🎨 Creator Hub</li>
-        <li onclick="showSection('insight')">📊 Insight Hub</li>
-        <li onclick="showSection('lab')">🧪 AI Lab</li>
-        <li onclick="showSection('history')">📜 History</li>
-    </ul>
+  <div class="side-title">Quantum Menu</div>
+  <ul>
+    <li onclick="showSection('home')">🏠 Home</li>
+    <li onclick="showSection('history')">🕒 History</li>
+    <li onclick="showSection('student')">🎓 Student Hub</li>
+    <li onclick="showSection('creator')">🎨 Creator Hub</li>
+    <li onclick="showSection('insight')">📊 Insight Hub</li>
+    <li onclick="showSection('lab')">🧪 Lab Hub</li>
+  </ul>
 </aside>
 
 <!-- ================= MAIN ================= -->
