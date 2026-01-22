@@ -1,112 +1,121 @@
-<!DOCTYPE html><html lang="en">
+  <!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quantum AI Dashboard</title>
-<style>
-  /* ---------- Reset & Base ---------- */
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif;}
-  body{background:#0a0f1f;color:#fff;overflow-x:hidden;}/* ---------- Top Header ---------- */ .top-header{position:fixed;top:10px;right:10px;cursor:pointer;z-index:1000;} .top-header .hamburger{font-size:1.8rem;color:#38bdf8;} .top-header.expanded .panel{display:block;animation:slideDown 0.3s ease forwards;} .top-header .panel{display:none;background:#111827;padding:10px 15px;border-radius:8px;box-shadow:0 0 15px #38bdf8;} .panel div{margin:5px 0;}
-
-@keyframes slideDown{ 0%{opacity:0;transform:translateY(-10px);} 100%{opacity:1;transform:translateY(0);} }
-
-/* ---------- Sidebar ---------- */ .sidebar{position:fixed;left:0;top:0;width:200px;height:100vh;background:#111827;display:flex;flex-direction:column;padding-top:60px;} .sidebar button{background:none;border:none;color:#38bdf8;padding:15px;cursor:pointer;text-align:left;font-size:1rem;transition:0.3s;} .sidebar button:hover{background:#1e293b;} .sidebar button.active{background:#22c55e;color:#000;font-weight:bold;}
-
-/* ---------- Main Panel ---------- */ .main-panel{margin-left:200px;padding:70px 30px;height:100vh;overflow-y:auto;scroll-behavior:smooth;transition:all 0.3s;}
-
-/* ---------- Hub Content ---------- */ .hub{display:none;} .hub.active{display:block;} .chat-bubble{margin:10px 0;padding:10px 15px;border-radius:12px;max-width:70%;} .chat-bubble.user{background:#38bdf8;color:#000;margin-left:auto;animation:fadeIn 0.3s ease;} .chat-bubble.ai{background:#1e293b;color:#fff;animation:fadeIn 0.3s ease;}
-
-@keyframes fadeIn{ from{opacity:0;transform:translateY(5px);} to{opacity:1;transform:translateY(0);} }
-
-/* ---------- Tabs ---------- */ .tabs{margin:15px 0;display:flex;gap:10px;} .tabs button{padding:8px 12px;border:none;border-radius:6px;cursor:pointer;background:#1e293b;color:#38bdf8;transition:0.3s;} .tabs button.active{background:#22c55e;color:#000;font-weight:bold;}
-
-/* ---------- History Panel ---------- */ .history-panel{background:#111827;padding:10px;border-radius:8px;margin-top:10px;max-height:200px;overflow-y:auto;} .history-panel div{margin:5px 0;font-size:0.9rem;color:#94a3b8;} </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum AI</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body><!-- Top Header --><div class="top-header" id="topHeader">
-  <div class="hamburger">≡</div>
-  <div class="panel">
-    <div>⚡ QUANTUM AI</div>
-    <div>● Systems Online</div>
-    <div>[History] [Sub-modes] [Notifications]</div>
-  </div>
-</div><!-- Sidebar --><div class="sidebar">
-  <button class="active" onclick="openHub('student')">Student Hub</button>
-  <button onclick="openHub('creator')">Creator Hub</button>
-  <button onclick="openHub('insight')">Insight Hub</button>
-  <button onclick="openHub('lab')">Lab Hub</button>
-</div><!-- Main Panel --><div class="main-panel">
-  <!-- Student Hub -->
-  <div class="hub active" id="student">
-    <div class="tabs">
-      <button class="active">GPT</button>
-      <button>HuggingFace</button>
-    </div>
-    <div class="chat-area" id="studentChat"></div>
-    <input type="text" id="studentInput" placeholder="Send a message..." style="width:100%;padding:10px;margin-top:10px;border-radius:6px;border:none;">
-    <div class="history-panel" id="studentHistory"></div>
-  </div>  <!-- Creator Hub -->  <div class="hub" id="creator">
-    <div class="tabs">
-      <button class="active">Idea Generator</button>
-      <button>Content Planner</button>
-    </div>
-    <div class="chat-area" id="creatorChat"></div>
-    <input type="text" id="creatorInput" placeholder="Send a message..." style="width:100%;padding:10px;margin-top:10px;border-radius:6px;border:none;">
-    <div class="history-panel" id="creatorHistory"></div>
-  </div>  <!-- Insight Hub -->  <div class="hub" id="insight">
-    <p>Analytics and Insights coming soon...</p>
-  </div>  <!-- Lab Hub -->  <div class="hub" id="lab">
-    <p>Experiments and Logs coming soon...</p>
-  </div>
-</div><script>
-// ---------- Top Header Toggle ----------
-const topHeader = document.getElementById('topHeader');
-topHeader.addEventListener('click', ()=>{
-  topHeader.classList.toggle('expanded');
-});
+<body>
+    <!-- TOP HEADER -->
+    <header>
+        <div id="menu-toggle">☰</div>
+        <div id="brand">⚡ QUANTUM AI</div>
+        <div id="status">● Online</div>
+        <div id="quick-access">History</div>
+    </header>
 
-// ---------- Hub Switching ----------
-function openHub(hubId){
-  document.querySelectorAll('.hub').forEach(hub=>hub.classList.remove('active'));
-  document.getElementById(hubId).classList.add('active');
+    <!-- SIDEBAR -->
+    <nav id="sidebar">
+        <ul>
+            <li onclick="showSection('home')">Home</li>
+            <li onclick="showSection('student-hub')">Student Hub</li>
+            <li onclick="showSection('creator-hub')">Creator Hub</li>
+            <li onclick="showSection('insight-hub')">Insight Hub</li>
+            <li onclick="showSection('lab-hub')">Lab Hub</li>
+            <li onclick="showSection('history')">History</li>
+            <li onclick="showSection('settings')">Settings</li>
+        </ul>
+    </nav>
 
-  document.querySelectorAll('.sidebar button').forEach(btn=>btn.classList.remove('active'));
-  event.target.classList.add('active');
-}
+    <!-- SECTIONS -->
+    <main>
+        <!-- HOME -->
+        <section id="home" class="active-section">
+            <h1>Welcome to Quantum AI</h1>
+            <div class="hub-cards">
+                <div class="hub-card" onclick="showSection('student-hub')">🎓 Student Hub</div>
+                <div class="hub-card" onclick="showSection('creator-hub')">🎨 Creator Hub</div>
+                <div class="hub-card" onclick="showSection('insight-hub')">🔍 Insight Hub</div>
+                <div class="hub-card" onclick="showSection('lab-hub')">🧪 Lab Hub</div>
+            </div>
+            <div class="command-bar">
+                <input type="text" id="quick-command" placeholder="Send command to Quantum AI...">
+                <button onclick="sendCommand()">▶</button>
+            </div>
+        </section>
 
-// ---------- Chat / History Placeholder ----------
-function addMessage(hub, text, sender){
-  const chatArea = document.getElementById(hub+'Chat');
-  const bubble = document.createElement('div');
-  bubble.classList.add('chat-bubble', sender);
-  bubble.textContent = text;
-  chatArea.appendChild(bubble);
-  chatArea.scrollTop = chatArea.scrollHeight;
+        <!-- STUDENT HUB -->
+        <section id="student-hub">
+            <h2>🎓 Student Hub</h2>
+            <div class="student-tools">
+                <div class="tool-card" onclick="openChat('jee')">JEE Mode</div>
+                <div class="tool-card" onclick="openChat('school')">School Teacher Mode</div>
+                <div class="tool-card" onclick="openChat('doubt')">Doubt Solver</div>
+                <div class="tool-card" onclick="openChat('notes')">Notes Generator</div>
+            </div>
+        </section>
 
-  const historyPanel = document.getElementById(hub+'History');
-  const hist = document.createElement('div');
-  hist.textContent = sender === 'user' ? 'You: '+text : 'AI: '+text;
-  historyPanel.appendChild(hist);
-}
+        <!-- CREATOR HUB -->
+        <section id="creator-hub">
+            <h2>🎨 Creator Hub</h2>
+            <div class="creator-tools">
+                <div class="tool-card" onclick="openChat('reel')">Viral Reel Studio</div>
+                <div class="tool-card" onclick="openChat('youtube')">YouTube Script Lab</div>
+                <div class="tool-card" onclick="openChat('caption')">Caption & Post Generator</div>
+                <div class="tool-card" onclick="openChat('thumbnail')">Thumbnail Idea Engine</div>
+            </div>
+        </section>
 
-// ---------- Dummy send example ----------
-function sendMessage(hub){
-  const input = document.getElementById(hub+'Input');
-  const msg = input.value.trim();
-  if(!msg) return;
-  addMessage(hub, msg, 'user');
-  input.value = '';
+        <!-- INSIGHT HUB -->
+        <section id="insight-hub">
+            <h2>🔍 Insight Hub</h2>
+            <div class="insight-tools">
+                <input type="text" id="insight-query" placeholder="Explore any topic...">
+                <button onclick="sendInsight()">Search</button>
+                <div id="insight-results"></div>
+            </div>
+        </section>
 
-  setTimeout(()=>{
-    addMessage(hub, 'Quantum AI is thinking...', 'ai');
-  }, 500);
-}
+        <!-- LAB HUB -->
+        <section id="lab-hub">
+            <h2>🧪 Lab Hub</h2>
+            <div class="lab-tools">
+                <div class="tool-card" onclick="openChat('image')">Image Lab</div>
+                <div class="tool-card" onclick="openChat('voice')">Voice Lab</div>
+                <div class="tool-card" onclick="openChat('prompt')">Prompt Playground</div>
+                <div class="tool-card" onclick="openChat('automation')">Automation Lab</div>
+            </div>
+        </section>
 
-// Optional: Enter key listener
-['student','creator'].forEach(hub=>{
-  document.getElementById(hub+'Input').addEventListener('keypress', e=>{
-    if(e.key==='Enter'){ sendMessage(hub); }
-  });
-});
-</script></body>
-</html>
+        <!-- CHAT -->
+        <section id="chat">
+            <h2 id="chat-mode-title">Chat</h2>
+            <div id="chat-window"></div>
+            <div class="chat-input">
+                <input type="text" id="chat-input" placeholder="Ask Quantum AI...">
+                <button onclick="sendChat()">▶</button>
+            </div>
+        </section>
+
+        <!-- HISTORY -->
+        <section id="history">
+            <h2>🕘 History</h2>
+            <div id="history-list"></div>
+        </section>
+
+        <!-- SETTINGS -->
+        <section id="settings">
+            <h2>⚙ Settings</h2>
+            <div class="settings-cards">
+                <div class="setting-card">Theme</div>
+                <div class="setting-card">Animations</div>
+                <div class="setting-card">Data</div>
+                <div class="setting-card">About Quantum AI</div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+                  </html>
