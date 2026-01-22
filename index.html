@@ -1,121 +1,84 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum AI</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quantum AI</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- TOP HEADER -->
-    <header>
-        <div id="menu-toggle">☰</div>
-        <div id="brand">⚡ QUANTUM AI</div>
-        <div id="status">● Online</div>
-        <div id="quick-access">History</div>
-    </header>
 
-    <!-- SIDEBAR -->
-    <nav id="sidebar">
-        <ul>
-            <li onclick="showSection('home')">Home</li>
-            <li onclick="showSection('student-hub')">Student Hub</li>
-            <li onclick="showSection('creator-hub')">Creator Hub</li>
-            <li onclick="showSection('insight-hub')">Insight Hub</li>
-            <li onclick="showSection('lab-hub')">Lab Hub</li>
-            <li onclick="showSection('history')">History</li>
-            <li onclick="showSection('settings')">Settings</li>
-        </ul>
-    </nav>
+<!-- Top Header -->
+<header>
+    <div class="brand">⚡ QUANTUM AI</div>
+    <div class="status">● Online</div>
+    <div class="quick-access">
+        <span onclick="showSection('home')">Home</span>
+        <span onclick="showSection('history')">History</span>
+    </div>
+    <div class="menu-btn" onclick="toggleSidebar()">☰</div>
+</header>
 
-    <!-- SECTIONS -->
-    <main>
-        <!-- HOME -->
-        <section id="home" class="active-section">
-            <h1>Welcome to Quantum AI</h1>
-            <div class="hub-cards">
-                <div class="hub-card" onclick="showSection('student-hub')">🎓 Student Hub</div>
-                <div class="hub-card" onclick="showSection('creator-hub')">🎨 Creator Hub</div>
-                <div class="hub-card" onclick="showSection('insight-hub')">🔍 Insight Hub</div>
-                <div class="hub-card" onclick="showSection('lab-hub')">🧪 Lab Hub</div>
-            </div>
-            <div class="command-bar">
-                <input type="text" id="quick-command" placeholder="Send command to Quantum AI...">
-                <button onclick="sendCommand()">▶</button>
-            </div>
-        </section>
+<!-- Sidebar -->
+<aside id="sidebar">
+    <ul>
+        <li onclick="showSection('student')">Student Hub</li>
+        <li onclick="showSection('creator')">Creator Hub</li>
+        <li onclick="showSection('insight')">Insight Hub</li>
+        <li onclick="showSection('lab')">Lab Hub</li>
+    </ul>
+</aside>
 
-        <!-- STUDENT HUB -->
-        <section id="student-hub">
-            <h2>🎓 Student Hub</h2>
-            <div class="student-tools">
-                <div class="tool-card" onclick="openChat('jee')">JEE Mode</div>
-                <div class="tool-card" onclick="openChat('school')">School Teacher Mode</div>
-                <div class="tool-card" onclick="openChat('doubt')">Doubt Solver</div>
-                <div class="tool-card" onclick="openChat('notes')">Notes Generator</div>
-            </div>
-        </section>
+<!-- Floating Back Button -->
+<div id="back-btn" onclick="showSection('home')">⬅ Back</div>
 
-        <!-- CREATOR HUB -->
-        <section id="creator-hub">
-            <h2>🎨 Creator Hub</h2>
-            <div class="creator-tools">
-                <div class="tool-card" onclick="openChat('reel')">Viral Reel Studio</div>
-                <div class="tool-card" onclick="openChat('youtube')">YouTube Script Lab</div>
-                <div class="tool-card" onclick="openChat('caption')">Caption & Post Generator</div>
-                <div class="tool-card" onclick="openChat('thumbnail')">Thumbnail Idea Engine</div>
-            </div>
-        </section>
+<!-- Main Sections -->
+<main>
+    <!-- Home -->
+    <section id="home" class="active-section">
+        <h1>Welcome to Quantum AI</h1>
+        <p>Select a hub to start.</p>
+    </section>
 
-        <!-- INSIGHT HUB -->
-        <section id="insight-hub">
-            <h2>🔍 Insight Hub</h2>
-            <div class="insight-tools">
-                <input type="text" id="insight-query" placeholder="Explore any topic...">
-                <button onclick="sendInsight()">Search</button>
-                <div id="insight-results"></div>
-            </div>
-        </section>
+    <!-- History -->
+    <section id="history">
+        <h1>History</h1>
+        <div class="history-list">No chats yet.</div>
+    </section>
 
-        <!-- LAB HUB -->
-        <section id="lab-hub">
-            <h2>🧪 Lab Hub</h2>
-            <div class="lab-tools">
-                <div class="tool-card" onclick="openChat('image')">Image Lab</div>
-                <div class="tool-card" onclick="openChat('voice')">Voice Lab</div>
-                <div class="tool-card" onclick="openChat('prompt')">Prompt Playground</div>
-                <div class="tool-card" onclick="openChat('automation')">Automation Lab</div>
-            </div>
-        </section>
+    <!-- Student Hub -->
+    <section id="student">
+        <h1>Student Hub</h1>
+        <div class="chat-container">
+            <div class="chat-user">Hello AI!</div>
+            <div class="chat-ai">Hi! How can I assist your learning today?</div>
+        </div>
+        <input type="text" placeholder="Type your message..." />
+    </section>
 
-        <!-- CHAT -->
-        <section id="chat">
-            <h2 id="chat-mode-title">Chat</h2>
-            <div id="chat-window"></div>
-            <div class="chat-input">
-                <input type="text" id="chat-input" placeholder="Ask Quantum AI...">
-                <button onclick="sendChat()">▶</button>
-            </div>
-        </section>
+    <!-- Creator Hub -->
+    <section id="creator">
+        <h1>Creator Hub</h1>
+        <div class="chat-container">
+            <div class="chat-user">Hello AI!</div>
+            <div class="chat-ai">Hi Creator! Ready to make something amazing?</div>
+        </div>
+        <input type="text" placeholder="Type your prompt..." />
+    </section>
 
-        <!-- HISTORY -->
-        <section id="history">
-            <h2>🕘 History</h2>
-            <div id="history-list"></div>
-        </section>
+    <!-- Insight Hub -->
+    <section id="insight">
+        <h1>Insight Hub</h1>
+        <p>AI insights will appear here.</p>
+    </section>
 
-        <!-- SETTINGS -->
-        <section id="settings">
-            <h2>⚙ Settings</h2>
-            <div class="settings-cards">
-                <div class="setting-card">Theme</div>
-                <div class="setting-card">Animations</div>
-                <div class="setting-card">Data</div>
-                <div class="setting-card">About Quantum AI</div>
-            </div>
-        </section>
-    </main>
+    <!-- Lab Hub -->
+    <section id="lab">
+        <h1>Lab Hub</h1>
+        <p>Experiment and explore AI tools.</p>
+    </section>
+</main>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
-                  </html>
+</html>
