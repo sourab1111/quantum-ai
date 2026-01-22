@@ -1,19 +1,48 @@
-<div class="app">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantum AI Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar / Modes -->
+    <div class="sidebar">
+      <div class="brand">⚡ QUANTUM AI</div>
+      <div class="status">● Systems Online</div>
+      <div class="mode active" data-mode="chat">Chat</div>
+      <div class="mode" data-mode="image">Image Gen</div>
+      <div class="mode" data-mode="voice">Voice</div>
+      <div class="mode" data-mode="backup">Backup</div>
+    </div>
 
-  <div class="header">
-    <div class="title">QUANTUM AI</div>
-    <div class="subtitle">Neural Processing System</div>
+    <!-- Main panel -->
+    <div class="main">
+      <div id="chatPanel" class="panel active">
+        <div id="chat" class="chat"></div>
+        <div class="input-box">
+          <input id="msgInput" placeholder="Send command to Quantum AI..." />
+          <button onclick="send()">▶</button>
+        </div>
+      </div>
+
+      <div id="imagePanel" class="panel">
+        <div class="image-preview">🎨 Images will appear here</div>
+        <button onclick="generateFakeImage()">Generate Image</button>
+      </div>
+
+      <div id="voicePanel" class="panel">
+        <div class="voice-preview">🎙 Voice mode placeholder</div>
+      </div>
+
+      <div id="backupPanel" class="panel">
+        <div class="backup-preview">💾 Backup mode placeholder</div>
+      </div>
+    </div>
   </div>
 
-  <div class="status">● Systems Online</div>
-
-  <div id="chat" class="chat"></div>
-
-  <div class="input-box">
-    <input id="msgInput" placeholder="Send command to Quantum AI..." />
-    <button onclick="send()">▶</button>
-  </div>
-
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
