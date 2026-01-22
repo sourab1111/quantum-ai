@@ -9,137 +9,234 @@
 
 <body>
 
-<!-- ===== TOP BAR ===== -->
-<header>
-    <div class="brand">⚡ QUANTUM AI</div>
-    <div class="status">● Online</div>
-    <div class="quick-access">
-        <span onclick="showSection('home')">Home</span>
-        <span onclick="showSection('history')">History</span>
-        <span onclick="toggleSidebar()">☰</span>
+<!-- ================= TOP BAR ================= -->
+<header class="topbar">
+    <div class="top-left">
+        <span class="menu-btn" onclick="toggleSidebar()">☰</span>
+        <span class="brand">⚡ Quantum AI</span>
+        <span class="sub">Neural Command Center</span>
+    </div>
+
+    <div class="top-right">
+        <span class="status">● Online</span>
+        <span onclick="toggleNotify()">🔔</span>
+        <span onclick="showSection('history')">📜</span>
+        <span id="topBackBtn" onclick="goHome()">⬅</span>
     </div>
 </header>
 
-<!-- ===== SIDEBAR ===== -->
+<!-- ================= SIDEBAR ================= -->
 <aside id="sidebar">
+    <h3>Control Deck</h3>
     <ul>
+        <li onclick="showSection('home')">🏠 Home</li>
         <li onclick="showSection('student')">🎓 Student Hub</li>
         <li onclick="showSection('creator')">🎨 Creator Hub</li>
         <li onclick="showSection('insight')">📊 Insight Hub</li>
-        <li onclick="showSection('lab')">🧪 Lab Hub</li>
+        <li onclick="showSection('lab')">🧪 AI Lab</li>
+        <li onclick="showSection('history')">📜 History</li>
     </ul>
 </aside>
 
-<!-- ===== BACK BUTTON ===== -->
-<div id="back-btn" onclick="showSection('home')">⬅ Back</div>
-
-<!-- ===== MAIN ===== -->
+<!-- ================= MAIN ================= -->
 <main>
 
-<!-- HOME -->
-<section id="home" class="active-section">
-    <div class="panel">
-        <h1>Welcome to Quantum AI</h1>
-        <p>Select a hub to begin your journey.</p>
+<!-- ============ HOME DASHBOARD ============ -->
+<section id="home" class="hub active">
+    <h1>Quantum AI Dashboard 🚀</h1>
+    <p class="tagline">Apna mode choose karo aur AI ka full power lo, bhai 😎</p>
 
-        <div class="hub-cards">
-            <div class="hub-card student" onclick="showSection('student')">
-                <h2>Student Hub</h2>
-                <p>Study smart, AI ke saath.</p>
-            </div>
-            <div class="hub-card creator" onclick="showSection('creator')">
-                <h2>Creator Hub</h2>
-                <p>Content, ideas, scripts.</p>
-            </div>
-            <div class="hub-card insight" onclick="showSection('insight')">
-                <h2>Insight Hub</h2>
-                <p>Deep analysis & answers.</p>
-            </div>
-            <div class="hub-card lab" onclick="showSection('lab')">
-                <h2>Lab Hub</h2>
-                <p>Experiment with AI tools.</p>
-            </div>
+    <div class="hub-grid">
+        <div class="hub-card student" onclick="showSection('student')">
+            <h2>🎓 Student Hub</h2>
+            <p>Notes • Doubts • Exam help</p>
+        </div>
+
+        <div class="hub-card creator" onclick="showSection('creator')">
+            <h2>🎨 Creator Hub</h2>
+            <p>Scripts • Ideas • Thumbnails</p>
+        </div>
+
+        <div class="hub-card insight" onclick="showSection('insight')">
+            <h2>📊 Insight Hub</h2>
+            <p>Research • Explain • Compare</p>
+        </div>
+
+        <div class="hub-card lab" onclick="showSection('lab')">
+            <h2>🧪 AI Lab</h2>
+            <p>Image • Video • Voice (soon)</p>
         </div>
     </div>
 </section>
 
-<!-- HISTORY -->
-<section id="history">
-    <div class="panel">
-        <h1>History</h1>
-        <p>No saved chats yet.</p>
-    </div>
-</section>
+<!-- ============ STUDENT HUB ============ -->
+<section id="student" class="hub">
 
-<!-- STUDENT -->
-<section id="student">
-    <div class="panel">
+    <div class="hub-tabs">
+        <button onclick="showTab('student-chat')">Chat</button>
+        <button onclick="showTab('student-notes')">Notes</button>
+        <button onclick="showTab('student-tools')">Tools</button>
+    </div>
+
+    <div class="panel tab active-tab" id="student-chat">
         <div class="hub-header">
-            <span>🎓 Student Mode</span>
+            <span>🎓 Study Chat</span>
             <button onclick="clearChat('student')">Clear</button>
         </div>
-
-        <div class="chat-container" id="student-chat">
-            <div class="chat-ai">Hi! Batao, kya padhna hai aaj?</div>
+        <div class="chat-container" id="student-chat-box">
+            <div class="chat-ai">Bolo bhai, kaunsa topic?</div>
         </div>
-
-        <input type="text" placeholder="Ask your study question..."
-        onkeydown="if(event.key==='Enter'){sendMessage('student')}">
+        <div class="input-bar">
+            <input placeholder="Ask study doubt..."
+            onkeydown="if(event.key==='Enter'){sendMessage('student')}">
+        </div>
     </div>
+
+    <div class="panel tab" id="student-notes">
+        <h3>📚 Smart Notes</h3>
+        <p>Auto notes generator coming soon…</p>
+        <ul>
+            <li>✔ Chapter summary</li>
+            <li>✔ Formula sheet</li>
+            <li>✔ Quick revision</li>
+        </ul>
+    </div>
+
+    <div class="panel tab" id="student-tools">
+        <h3>🛠 Study Tools</h3>
+        <div class="tool-grid">
+            <div>📐 Formula Solver</div>
+            <div>🧠 MCQ Generator</div>
+            <div>📖 Concept Explainer</div>
+        </div>
+    </div>
+
 </section>
 
-<!-- CREATOR -->
-<section id="creator">
-    <div class="panel">
+<!-- ============ CREATOR HUB ============ -->
+<section id="creator" class="hub">
+
+    <div class="hub-tabs">
+        <button onclick="showTab('creator-chat')">Chat</button>
+        <button onclick="showTab('creator-ideas')">Ideas</button>
+        <button onclick="showTab('creator-tools')">Tools</button>
+    </div>
+
+    <div class="panel tab active-tab" id="creator-chat">
         <div class="hub-header">
-            <span>🎨 Creator Mode</span>
+            <span>🎨 Creator Chat</span>
             <button onclick="clearChat('creator')">Clear</button>
         </div>
-
-        <div class="chat-container" id="creator-chat">
-            <div class="chat-ai">Ready to create something amazing?</div>
+        <div class="chat-container" id="creator-chat-box">
+            <div class="chat-ai">Aaj kya viral banana hai? 🔥</div>
         </div>
-
-        <input type="text" placeholder="Enter creative prompt..."
-        onkeydown="if(event.key==='Enter'){sendMessage('creator')}">
+        <div class="input-bar">
+            <input placeholder="Give me content idea..."
+            onkeydown="if(event.key==='Enter'){sendMessage('creator')}">
+        </div>
     </div>
+
+    <div class="panel tab" id="creator-ideas">
+        <h3>💡 Trending Ideas</h3>
+        <ul>
+            <li>Reels Hook Generator</li>
+            <li>YouTube Title Booster</li>
+            <li>Instagram Caption AI</li>
+        </ul>
+    </div>
+
+    <div class="panel tab" id="creator-tools">
+        <h3>🛠 Creator Tools</h3>
+        <div class="tool-grid">
+            <div>🎤 Voice Script</div>
+            <div>🎬 Video Prompt</div>
+            <div>🖼 Thumbnail Text</div>
+        </div>
+    </div>
+
 </section>
 
-<!-- INSIGHT -->
-<section id="insight">
-    <div class="panel">
+<!-- ============ INSIGHT HUB ============ -->
+<section id="insight" class="hub">
+
+    <div class="hub-tabs">
+        <button onclick="showTab('insight-chat')">Chat</button>
+        <button onclick="showTab('insight-research')">Research</button>
+        <button onclick="showTab('insight-compare')">Compare</button>
+    </div>
+
+    <div class="panel tab active-tab" id="insight-chat">
         <div class="hub-header">
-            <span>📊 Insight Mode</span>
+            <span>📊 Insight Chat</span>
             <button onclick="clearChat('insight')">Clear</button>
         </div>
+        <div class="chat-container" id="insight-chat-box">
+            <div class="chat-ai">Deep analysis ready, bolo kya chahiye.</div>
+        </div>
+        <div class="input-bar">
+            <input placeholder="Ask for explanation..."
+            onkeydown="if(event.key==='Enter'){sendMessage('insight')}">
+        </div>
+    </div>
 
-        <div class="chat-container" id="insight-chat">
-            <div class="chat-ai">Ask anything for deep insights.</div>
+    <div class="panel tab" id="insight-research">
+        <h3>🔍 Research Mode</h3>
+        <p>Topic breakdown + summary soon…</p>
+    </div>
+
+    <div class="panel tab" id="insight-compare">
+        <h3>⚖ Compare Tool</h3>
+        <p>Product, ideas, strategies compare karo.</p>
+    </div>
+
+</section>
+
+<!-- ============ AI LAB ============ -->
+<section id="lab" class="hub">
+    <div class="panel center">
+        <h2>🧪 Quantum AI Lab</h2>
+        <p>Advanced AI modules deploying…</p>
+
+        <div class="tool-grid">
+            <div>🖼 Text → Image</div>
+            <div>🎥 Text → Video</div>
+            <div>🎧 Voice AI</div>
+            <div>🤖 Auto Agents</div>
         </div>
 
-        <input type="text" placeholder="Ask for analysis..."
-        onkeydown="if(event.key==='Enter'){sendMessage('insight')}">
+        <p class="small">System upgrade in progress… stay tuned bhai 🔥</p>
     </div>
 </section>
 
-<!-- LAB -->
-<section id="lab">
+<!-- ============ HISTORY ============ -->
+<section id="history" class="hub">
     <div class="panel">
-        <h1>🧪 AI Lab</h1>
-        <p>Advanced tools coming soon…</p>
+        <h2>📜 Conversation Logs</h2>
+        <div id="history-content">
+            <p>No stored chats yet… system learning phase 😅</p>
+        </div>
     </div>
 </section>
 
 </main>
 
-<!-- MOBILE NAV -->
+<!-- ================= MOBILE NAV ================= -->
 <nav class="mobile-nav">
+    <span onclick="showSection('home')">🏠</span>
     <span onclick="showSection('student')">🎓</span>
     <span onclick="showSection('creator')">🎨</span>
     <span onclick="showSection('insight')">📊</span>
     <span onclick="showSection('lab')">🧪</span>
 </nav>
 
+<!-- ================= NOTIFICATION ================= -->
+<div id="notifyPanel">
+    <h3>System Status</h3>
+    <p>⚡ Quantum Core Active</p>
+    <p>🧠 Memory Optimized</p>
+    <p>🚀 New modules installing…</p>
+</div>
+
 <script src="script.js"></script>
 </body>
-    </html>
+</html>
