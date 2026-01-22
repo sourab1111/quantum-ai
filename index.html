@@ -12,8 +12,9 @@
 <!-- ===== TOP BAR ===== -->
 <header>
     <div class="brand">⚡ QUANTUM AI</div>
+    <div class="sub-brand">Neural Processing System</div>
     <div class="status">● Online</div>
-    <div class="quick-access">
+    <div class="quick-access"><span onclick="toggleNotify()">🔔</span>
         <span onclick="showSection('home')">Home</span>
         <span onclick="showSection('history')">History</span>
         <span onclick="toggleSidebar()">☰</span>
@@ -71,26 +72,33 @@
     </div>
 </section>
 
-<!-- STUDENT -->
-<section id="student">
+<!-- STUDENT HUB -->
+<section id="student" class="hub">
+    <!-- Back button -->
+    <button class="back-btn" onclick="goHome()">← Back</button>
+
     <div class="panel">
         <div class="hub-header">
             <span>🎓 Student Mode</span>
             <button onclick="clearChat('student')">Clear</button>
         </div>
 
+        <!-- Chat container -->
         <div class="chat-container" id="student-chat">
-            <div class="chat-ai">Hi! Batao, kya padhna hai aaj?</div>
+            <div class="chat-ai">Hi! Bataa, kya padhna hai aaj?</div>
         </div>
 
+        <!-- Input field -->
         <input type="text" placeholder="Ask your study question..."
         onkeydown="if(event.key==='Enter'){sendMessage('student')}">
     </div>
 </section>
 
 <!-- CREATOR -->
-<section id="creator">
-    <div class="panel">
+<section id="creator" class="hub">
+  <button class="back-btn" onclick="goHome()">⬅ Back</button>
+
+  <div class="panel">
         <div class="hub-header">
             <span>🎨 Creator Mode</span>
             <button onclick="clearChat('creator')">Clear</button>
@@ -106,8 +114,10 @@
 </section>
 
 <!-- INSIGHT -->
-<section id="insight">
-    <div class="panel">
+<section id="insight" class="hub">
+  <button class="back-btn" onclick="goHome()">⬅ Back</button>
+
+  <div class="panel">
         <div class="hub-header">
             <span>📊 Insight Mode</span>
             <button onclick="clearChat('insight')">Clear</button>
@@ -123,8 +133,10 @@
 </section>
 
 <!-- LAB -->
-<section id="lab">
-    <div class="panel">
+<section id="lab" class="hub">
+  <button class="back-btn" onclick="goHome()">⬅ Back</button>
+
+  <div class="panel">
         <h1>🧪 AI Lab</h1>
         <p>Advanced tools coming soon…</p>
     </div>
@@ -140,6 +152,25 @@
     <span onclick="showSection('lab')">🧪</span>
 </nav>
 
+</main>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav">
+    <span onclick="showSection('student')">🎓</span>
+    <span onclick="showSection('creator')">🎨</span>
+    <span onclick="showSection('insight')">📊</span>
+    <span onclick="showSection('lab')">🧪</span>
+</nav>
+
+<!-- Notification Panel -->
+<div id="notifyPanel">
+    <h3>System Alerts</h3>
+    <p>⚡ Quantum Core synced successfully</p>
+    <p>🧠 Neural cache optimized</p>
+    <p>🚀 New features loading soon… stay ready bhai</p>
+</div>
+
 <script src="script.js"></script>
+
 </body>
 </html>
