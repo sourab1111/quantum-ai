@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Quantum AI</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="app">
-    <h1>⚡ Quantum AI</h1>
+<div class="app">
 
-    <div id="chat"></div>
-
-    <div class="input-box">
-      <input id="msg" placeholder="Ask Quantum AI..." />
-      <button onclick="send()">Send</button>
-    </div>
+  <div class="header">
+    <div class="title">QUANTUM AI</div>
+    <div class="subtitle">Neural Processing System</div>
   </div>
 
-  <script src="script.js"></script>
-</body>
-</html>
+  <div class="status">● Systems Online</div>
+
+  <div id="chat" class="chat"></div>
+
+  <div class="input-box">
+    <input id="msgInput" placeholder="Send command to Quantum AI..." />
+    <button onclick="send()">▶</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
