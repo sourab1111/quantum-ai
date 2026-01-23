@@ -13,41 +13,41 @@ function showSection(id){
 function toggleSidebar(){
   document.getElementById("sidebar").classList.toggle("show");
 }
-
 async function sendMessage(hub){
   const input = document.querySelector(`#${hub} input`);
-  const box = document.getElementById(hub + "-chat");
+  const box = document.getElementById(hub+"-chat");
   if(!input.value.trim()) return;
 
-  // show user message
+  const msg = input.value;
+
   const u = document.createElement("div");
   u.className = "chat-user";
-  u.innerText = input.value;
+  u.innerText = msg;
   box.appendChild(u);
-
-  const userMsg = input.value;
   input.value = "";
 
-  // show typing...
-  const t = document.createElement("div");
-  t.className = "chat-ai";
-  t.innerText = "Typing...";
-  box.appendChild(t);
+  // loading
+  const a = document.createElement("div");
+  a.className = "chat-ai";
+  a.innerText = "Thinking... 🤔";
+  box.appendChild(a);
   box.scrollTop = box.scrollHeight;
 
   try{
-    const res = await fetch("https://thus-conditioning-acer-use.trycloudflare.com/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: userMsg })
-    });
+    const res = await fetch(
+      "https://loves-rare-achievements-ambient.trycloudflare.com/chat",
+      {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify({ message: msg })
+      }
+    );
 
     const data = await res.json();
-    t.innerText = data.reply || "No reply";
+    a.innerText = data.reply || "No reply 😢";
 
-  }catch(err){
-    t.innerText = "Server error 😢";
-    console.error(err);
+  }catch(e){
+    a.innerText = "Server error 😢";
   }
 }
 
