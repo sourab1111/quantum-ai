@@ -219,3 +219,83 @@ main{
 }
 .mobile-nav span{font-size:22px;cursor:pointer;transition:.2s;}
 .mobile-nav span:hover{transform:scale(1.1);}
+/* ================= PREMIUM HOME ================= */
+
+.premium-home{
+  height:100%;
+}
+
+.home-wrap{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.home-hero{
+  text-align:center;
+  margin-top:10px;
+}
+
+.home-hero h1{
+  font-size:28px;
+  letter-spacing:1px;
+  color:#7ff;
+}
+
+.home-hero p{
+  margin-top:6px;
+  font-size:13px;
+  opacity:.75;
+}
+
+.home-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+  padding:10px;
+  flex:1;
+}
+
+.home-card{
+  background:linear-gradient(160deg,rgba(0,255,255,.15),rgba(0,60,90,.4));
+  border:1px solid rgba(0,255,255,.25);
+  border-radius:20px;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  transition:.35s;
+  cursor:pointer;
+}
+
+.home-card h2{
+  font-size:17px;
+  margin-bottom:6px;
+}
+
+.home-card p{
+  font-size:12px;
+  opacity:.8;
+}
+
+.home-card:hover{
+  transform:translateY(-4px) scale(1.03);
+  box-shadow:0 0 25px rgba(0,255,255,.4);
+}
+
+/* recommended card */
+.home-card.highlight{
+  background:linear-gradient(160deg,rgba(120,80,255,.45),rgba(60,30,180,.6));
+  border:1px solid rgba(160,120,255,.6);
+  box-shadow:0 0 30px rgba(140,100,255,.5);
+}
+
+.home-card.highlight span{
+  margin-top:8px;
+  font-size:11px;
+  color:#fff;
+  opacity:.9;
+}
