@@ -36,7 +36,7 @@ function sendMessage(hub){
     chatBox.scrollTop = chatBox.scrollHeight;
 
     // Send message to backend
-    fetch("https://posing-bring-happened-into.trycloudflare.com/chat", {   // <-- yaha tumhara public URL
+    const API_URL = "https://stanford-family-personnel-since.trycloudflare.com";   // <-- yaha tumhara public URL
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ hub: hub, message: message })
