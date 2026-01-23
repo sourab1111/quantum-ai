@@ -13,47 +13,53 @@ function showSection(id){
 function toggleSidebar(){
   document.getElementById("sidebar").classList.toggle("show");
 }
-async function sendMessage(hub){
+function sendMessage(hub){
     const input = document.querySelector(`#${hub} input`);
-    const box = document.getElementById(hub + "-chat");
-    if(!input.value.trim()) return;
-
-    const msg = input.value;
+    const chatBox = document.getElementById(hub + "-chat");
+    if(!input || input.value.trim()==="") return;
 
     // User message
-    const u = document.createElement("div");
-    u.className = "chat-user";
-    u.innerText = msg;
-    box.appendChild(u);
+    const userMsg = document.createElement("div");
+    userMsg.className = "chat-user";
+    userMsg.innerText = input.value;
+    chatBox.appendChild(userMsg);
+
+    const message = input.value;
     input.value = "";
+    chatBox.scrollTop = chatBox.scrollHeight;
 
-    // Loading AI message
-    const a = document.createElement("div");
-    a.className = "chat-ai";
-    a.innerText = "Thinking... 🤔";
-    box.appendChild(a);
-    box.scrollTop = box.scrollHeight;
+    // Show typing dots
+    const typing = document.createElement("div");
+    typing.className = "chat-ai";
+    typing.innerHTML = `<span class="typingDots">Quantum AI typing<span>.</span><span>.</span><span>.</span></span>`;
+    chatBox.appendChild(typing);
+    chatBox.scrollTop = chatBox.scrollHeight;
 
-    try {
-        const response = await fetch(
-            "https://loves-rare-achievements-ambient.trycloudflare.com/chat", // your public backend
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: msg })
-            }
-        );
-
-        const data = await response.json();
-        a.innerText = data.reply || "No reply 😢";
-
-    } catch(err) {
-        a.innerText = "Server error 😢";
+    // Send message to backend
+    fetch("https://posing-bring-happened-into.trycloudflare.com/chat", {   // <-- yaha tumhara public URL
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ hub: hub, message: message })
+    })
+    .then(res => res.json())
+    .then(data => {
+        typing.remove();
+        const aiMsg = document.createElement("div");
+        aiMsg.className = "chat-ai";
+        aiMsg.innerText = data.reply || "Sorry, koi reply nahi mila 😅";
+        chatBox.appendChild(aiMsg);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    })
+    .catch(err => {
+        typing.remove();
+        const aiMsg = document.createElement("div");
+        aiMsg.className = "chat-ai";
+        aiMsg.innerText = "Server error 😢, try again!";
+        chatBox.appendChild(aiMsg);
+        chatBox.scrollTop = chatBox.scrollHeight;
         console.error(err);
-    }
-
-    box.scrollTop = box.scrollHeight;
-          }
+    });
+}
 
 function clearChat(hub){
   document.getElementById(hub+"-chat").innerHTML=
