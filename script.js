@@ -14,49 +14,42 @@ function toggleSidebar(){
   document.getElementById("sidebar").classList.toggle("show");
 }
 
-function sendMessage(hub){
+async function sendMessage(hub){
   const input = document.querySelector(`#${hub} input`);
-  const box = document.getElementById(hub+"-chat");
-
+  const box = document.getElementById(hub + "-chat");
   if(!input.value.trim()) return;
 
-  // show user msg
+  // show user message
   const u = document.createElement("div");
   u.className = "chat-user";
   u.innerText = input.value;
   box.appendChild(u);
 
-  const userText = input.value;
+  const userMsg = input.value;
   input.value = "";
 
-  // typing msg
+  // show typing...
   const t = document.createElement("div");
   t.className = "chat-ai";
   t.innerText = "Typing...";
   box.appendChild(t);
+  box.scrollTop = box.scrollHeight;
 
-  // SEND TO BACKEND
-  fetch("http://localhost:5000/chat",{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body: JSON.stringify({ message: userText })
-  })
-  .then(res => res.json())
-  .then(data => {
-    t.remove();
-    const a = document.createElement("div");
-    a.className = "chat-ai";
-    a.innerText = data.reply;
-    box.appendChild(a);
-    box.scrollTop = box.scrollHeight;
-  })
-  .catch(err=>{
-    t.innerText = "Server error ❌";
-    console.log(err);
-  });
-    }
+  try{
+    const res = await fetch("https://thus-conditioning-acer-use.trycloudflare.com/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: userMsg })
+    });
+
+    const data = await res.json();
+    t.innerText = data.reply || "No reply";
+
+  }catch(err){
+    t.innerText = "Server error 😢";
+    console.error(err);
+  }
+}
 
 function clearChat(hub){
   document.getElementById(hub+"-chat").innerHTML=
