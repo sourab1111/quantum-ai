@@ -14,54 +14,49 @@ function toggleSidebar(){
   document.getElementById("sidebar").classList.toggle("show");
 }
 
-async function sendMessage(hub){
-    const input = document.querySelector(`#${hub} input`);
-    const chatBox = document.getElementById(hub + "-chat");
-    if(!input || input.value.trim() === "") return;
+function sendMessage(hub){
+  const input = document.querySelector(`#${hub} input`);
+  const box = document.getElementById(hub+"-chat");
 
-    // User message display
-    const userMsg = document.createElement("div");
-    userMsg.className = "chat-user";
-    userMsg.innerText = input.value;
-    chatBox.appendChild(userMsg);
+  if(!input.value.trim()) return;
 
-    const messageText = input.value;
-    input.value = "";
-    chatBox.scrollTop = chatBox.scrollHeight;
+  // show user msg
+  const u = document.createElement("div");
+  u.className = "chat-user";
+  u.innerText = input.value;
+  box.appendChild(u);
 
-    // Typing indicator
-    const typing = document.createElement("div");
-    typing.className = "chat-ai";
-    typing.innerHTML = "Quantum AI typing<span>.</span><span>.</span><span>.</span>";
-    chatBox.appendChild(typing);
-    chatBox.scrollTop = chatBox.scrollHeight;
+  const userText = input.value;
+  input.value = "";
 
-    try {
-        // API call to your backend
-        const response = await fetch("http://localhost:5000/api/chat", {  // <-- backend URL
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({ hub, message: messageText })
-        });
+  // typing msg
+  const t = document.createElement("div");
+  t.className = "chat-ai";
+  t.innerText = "Typing...";
+  box.appendChild(t);
 
-        const data = await response.json();
-        typing.remove();
-
-        // AI response display
-        const aiMsg = document.createElement("div");
-        aiMsg.className = "chat-ai";
-        aiMsg.innerText = data.reply;  // backend se real reply
-        chatBox.appendChild(aiMsg);
-        chatBox.scrollTop = chatBox.scrollHeight;
-
-    } catch (err) {
-        typing.remove();
-        const errorMsg = document.createElement("div");
-        errorMsg.className = "chat-ai";
-        errorMsg.innerText = "⚠ Server se connection nahi ho paaya";
-        chatBox.appendChild(errorMsg);
+  // SEND TO BACKEND
+  fetch("http://localhost:5000/chat",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body: JSON.stringify({ message: userText })
+  })
+  .then(res => res.json())
+  .then(data => {
+    t.remove();
+    const a = document.createElement("div");
+    a.className = "chat-ai";
+    a.innerText = data.reply;
+    box.appendChild(a);
+    box.scrollTop = box.scrollHeight;
+  })
+  .catch(err=>{
+    t.innerText = "Server error ❌";
+    console.log(err);
+  });
     }
-                                           }
 
 function clearChat(hub){
   document.getElementById(hub+"-chat").innerHTML=
