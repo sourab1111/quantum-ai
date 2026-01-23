@@ -8,164 +8,148 @@
 </head>
 <body>
 
-<!-- ===== TOP BAR ===== -->
+<!-- ===== HEADER ===== -->
 <header class="top-bar">
-  <div class="left-head">
-    <span class="menu-btn" onclick="toggleSidebar()">☰</span>
-    <span class="top-back" id="topBackBtn" onclick="showSection('home')">⬅ Back</span>
-  </div>
-  <div class="right-head">⚡ Quantum AI</div>
+    <div class="left-head">
+        <span class="menu-btn" onclick="toggleSidebar()">☰</span>
+        <span class="top-back" id="topBackBtn" onclick="showSection('home')">⬅ Back</span>
+    </div>
+    <div class="right-head">⚡ Quantum AI</div>
 </header>
 
-<!-- ===== SIDEBAR ===== -->
+<!-- ===== SIDEBAR (History + Other tabs) ===== -->
 <aside id="sidebar">
-  <h3>Navigation</h3>
-  <ul>
-    <li onclick="showSection('home')">🏠 Home</li>
-    <li onclick="showSection('history')">📜 History</li>
-    <li onclick="showSection('student')">🎓 Student Hub</li>
-    <li onclick="showSection('creator')">🎨 Creator Hub</li>
-    <li onclick="showSection('insight')">📊 Insight Hub</li>
-    <li onclick="showSection('lab')">🧪 Lab Hub</li>
-  </ul>
+    <h3>Menu</h3>
+    <ul>
+        <li onclick="showSection('home')">🏠 Home</li>
+        <li onclick="showSection('history')">📜 History</li>
+        <li onclick="showSection('settings')">⚙️ Settings</li>
+    </ul>
 </aside>
+
+<!-- ===== NOTIFICATION PANEL ===== -->
+<div id="notifyPanel">
+    <h3>System Alerts</h3>
+    <p>⚡ Quantum Core synced successfully</p>
+    <p>🧠 Neural cache optimized</p>
+    <p>🚀 New features loading soon… stay ready bhai</p>
+</div>
 
 <!-- ===== MAIN CONTENT ===== -->
 <main>
 
-<!-- HOME SECTION -->
+<!-- HOME PAGE -->
 <section id="home" class="hub active">
-  <div class="panel center">
-    <h1>Welcome to Quantum AI</h1>
-    <p class="tagline">Tere liye AI ready hai, apna journey shuru kar.</p>
-
-    <div class="hub-grid">
-      <div class="hub-card student" onclick="showSection('student')">
-        <h2>Student Hub</h2>
-        <p>Tere liye perfect study plan ready hai ✅</p>
-      </div>
-      <div class="hub-card creator" onclick="showSection('creator')">
-        <h2>Creator Hub</h2>
-        <p>Tere creative ideas, AI ke touch ke saath ✨</p>
-      </div>
-      <div class="hub-card insight" onclick="showSection('insight')">
-        <h2>Insight Hub</h2>
-        <p>Deep analysis aur insights, instantly 🔍</p>
-      </div>
-      <div class="hub-card lab" onclick="showSection('lab')">
-        <h2>Lab Hub</h2>
-        <p>Advanced AI experiments, hands-on 🧪</p>
-      </div>
+    <div class="panel">
+        <h1>Welcome to Quantum AI</h1>
+        <p class="tagline">Select a hub to begin your journey 🚀</p>
+        <div class="hub-grid">
+            <div class="hub-card student" onclick="showSection('student')">
+                <h2>🎓 Student Hub</h2>
+                <p>Study smart, AI ke saath</p>
+            </div>
+            <div class="hub-card creator" onclick="showSection('creator')">
+                <h2>🎨 Creator Hub</h2>
+                <p>Content aur ideas ka powerhouse</p>
+            </div>
+            <div class="hub-card insight" onclick="showSection('insight')">
+                <h2>📊 Insight Hub</h2>
+                <p>Data aur analysis fast</p>
+            </div>
+            <div class="hub-card lab" onclick="showSection('lab')">
+                <h2>🧪 Lab Hub</h2>
+                <p>Experiments aur AI tools</p>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- HISTORY SECTION -->
+<!-- HISTORY PAGE -->
 <section id="history" class="hub">
-  <div class="panel">
-    <h1>📜 History</h1>
-    <p>No saved chats yet. Start exploring!</p>
-  </div>
+    <div class="panel center">
+        <h1>📜 History</h1>
+        <p>No saved chats yet, bro!</p>
+    </div>
 </section>
 
 <!-- STUDENT HUB -->
 <section id="student" class="hub">
-  <div class="panel">
-    <div class="hub-header">
-      <span>🎓 Student Mode</span>
-      <button onclick="clearChat('student')">Clear</button>
+    <div class="panel">
+        <div class="hub-header">
+            <span>🎓 Student Mode</span>
+            <button onclick="clearChat('student')">Clear</button>
+        </div>
+        <div class="chat-container" id="student-chat">
+            <div class="chat-ai">Hi! Batao, kya padhna hai aaj?</div>
+        </div>
+        <div class="input-bar">
+            <input type="text" placeholder="Ask your study question..." onkeydown="if(event.key==='Enter'){sendMessage('student')}">
+            <button onclick="sendMessage('student')">➤</button>
+        </div>
     </div>
-
-    <div class="chat-container" id="student-chat">
-      <div class="chat-ai">Hello! Kaunsa topic explore karna hai aaj?</div>
-    </div>
-
-    <div class="input-bar">
-      <input type="text" placeholder="Type your question..."
-        onkeydown="if(event.key==='Enter'){sendMessage('student')}">
-      <button onclick="sendMessage('student')">➤</button>
-    </div>
-  </div>
 </section>
 
 <!-- CREATOR HUB -->
 <section id="creator" class="hub">
-  <div class="panel">
-    <div class="hub-header">
-      <span>🎨 Creator Mode</span>
-      <button onclick="clearChat('creator')">Clear</button>
+    <div class="panel">
+        <div class="hub-header">
+            <span>🎨 Creator Mode</span>
+            <button onclick="clearChat('creator')">Clear</button>
+        </div>
+        <div class="chat-container" id="creator-chat">
+            <div class="chat-ai">Hey Creator! Kaunsa content banana hai aaj?</div>
+        </div>
+        <div class="input-bar">
+            <input type="text" placeholder="Type your creative idea..." onkeydown="if(event.key==='Enter'){sendMessage('creator')}">
+            <button onclick="sendMessage('creator')">➤</button>
+        </div>
     </div>
-
-    <div class="chat-container" id="creator-chat">
-      <div class="chat-ai">Shuru karte hain, kya naya create karna hai?</div>
-    </div>
-
-    <div class="input-bar">
-      <input type="text" placeholder="Type your creative prompt..."
-        onkeydown="if(event.key==='Enter'){sendMessage('creator')}">
-      <button onclick="sendMessage('creator')">➤</button>
-    </div>
-  </div>
 </section>
 
 <!-- INSIGHT HUB -->
 <section id="insight" class="hub">
-  <div class="panel">
-    <div class="hub-header">
-      <span>📊 Insight Mode</span>
-      <button onclick="clearChat('insight')">Clear</button>
+    <div class="panel">
+        <div class="hub-header">
+            <span>📊 Insight Mode</span>
+            <button onclick="clearChat('insight')">Clear</button>
+        </div>
+        <div class="chat-container" id="insight-chat">
+            <div class="chat-ai">Insights ready! Kya analyse karna hai?</div>
+        </div>
+        <div class="input-bar">
+            <input type="text" placeholder="Ask for analysis..." onkeydown="if(event.key==='Enter'){sendMessage('insight')}">
+            <button onclick="sendMessage('insight')">➤</button>
+        </div>
     </div>
-
-    <div class="chat-container" id="insight-chat">
-      <div class="chat-ai">Kuch bhi poochho, detailed insights milenge 🔍</div>
-    </div>
-
-    <div class="input-bar">
-      <input type="text" placeholder="Type your insight question..."
-        onkeydown="if(event.key==='Enter'){sendMessage('insight')}">
-      <button onclick="sendMessage('insight')">➤</button>
-    </div>
-  </div>
 </section>
 
 <!-- LAB HUB -->
 <section id="lab" class="hub">
-  <div class="panel">
-    <div class="hub-header">
-      <span>🧪 Lab Mode</span>
-      <button onclick="clearChat('lab')">Clear</button>
+    <div class="panel">
+        <div class="hub-header">
+            <span>🧪 Lab Mode</span>
+            <button onclick="clearChat('lab')">Clear</button>
+        </div>
+        <div class="chat-container" id="lab-chat">
+            <div class="chat-ai">Lab ready! Experiment start karna hai?</div>
+        </div>
+        <div class="input-bar">
+            <input type="text" placeholder="Type your experiment..." onkeydown="if(event.key==='Enter'){sendMessage('lab')}">
+            <button onclick="sendMessage('lab')">➤</button>
+        </div>
     </div>
-
-    <div class="chat-container" id="lab-chat">
-      <div class="chat-ai">Lab ready! Parameters set kar raha hoon 🔬</div>
-    </div>
-
-    <div class="input-bar">
-      <input type="text" placeholder="Type your experiment..."
-        onkeydown="if(event.key==='Enter'){sendMessage('lab')}">
-      <button onclick="sendMessage('lab')">➤</button>
-    </div>
-  </div>
 </section>
 
 </main>
 
-<!-- MOBILE NAV -->
+<!-- ===== MOBILE NAV ===== -->
 <nav class="mobile-nav">
-  <span onclick="showSection('student')">🎓</span>
-  <span onclick="showSection('creator')">🎨</span>
-  <span onclick="showSection('insight')">📊</span>
-  <span onclick="showSection('lab')">🧪</span>
+    <span onclick="showSection('student')">🎓</span>
+    <span onclick="showSection('creator')">🎨</span>
+    <span onclick="showSection('insight')">📊</span>
+    <span onclick="showSection('lab')">🧪</span>
 </nav>
-
-<!-- NOTIFICATION PANEL -->
-<div id="notifyPanel">
-  <h3>System Alerts</h3>
-  <p>⚡ Quantum Core synced successfully</p>
-  <p>🧠 Neural cache optimized</p>
-  <p>🚀 New features loading soon… stay ready bhai</p>
-</div>
 
 <script src="script.js"></script>
 </body>
-        </html>
+  </html>
