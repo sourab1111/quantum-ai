@@ -11,10 +11,10 @@
 
 <!-- ===== PRO MINIMAL HEADER ===== -->
 <header class="top-bar">
-  <div class="left-head">
-    <span class="menu-btn" onclick="toggleMenu()">☰</span>
-    <span class="top-back" onclick="goBack()">←</span>
-  </div>
+  <span class="menu-btn" onclick="toggleSidebar()">☰</span>
+
+  <!-- Back button (hidden on home) -->
+  <span id="topBackBtn" class="top-back" onclick="showSection('home')">←</span>
 
   <div class="right-head">Quantum AI</div>
 </header>
