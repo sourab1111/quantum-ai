@@ -68,14 +68,12 @@ main {
 /* ================= HOME HUB GRID ================= */
 .hub-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-    flex: 1;                     /* stretch full available height */
-    padding-bottom: 20px;        /* footer se gap */
-    overflow: hidden;            /* grid scroll remove */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* smaller cards fit screen */
+    gap: 12px;       /* gap thoda kam karo */
+    margin-top: 16px; /* upar ka gap kam karo */
+    padding-bottom: 20px; /* footer se gap */
+    overflow: hidden;     /* grid scroll remove */
 }
-
 /* ================= HUB CARDS ================= */
 .hub-card {
     padding: 20px;
