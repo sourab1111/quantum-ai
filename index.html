@@ -25,7 +25,7 @@
         <li onclick="showSection('creator')">🎨 Creator Hub</li>
         <li onclick="showSection('insight')">📊 Insight Hub</li>
         <li onclick="showSection('lab')">🧪 Lab Hub</li>
-        <!-- History removed from home -->
+        <li onclick="showSection('history')">📜 History</li>
     </ul>
 </aside>
 
@@ -67,95 +67,76 @@
 
     <!-- STUDENT HUB -->
     <section id="student" class="hub">
-    <div class="panel">
-        <!-- Hub Header -->
-        <div class="hub-header">
-            <span>🎓 Student Mode</span>
-            <button onclick="clearChat('student')">Clear</button>
+        <div class="panel">
+            <div class="hub-header">
+                <span>🎓 Student Mode</span>
+                <button onclick="clearChat('student')">Clear</button>
+            </div>
+            <div class="chat-container" id="student-chat">
+                <div class="chat-ai">Hi! Batao, kya padhna hai aaj?</div>
+            </div>
+            <div class="input-bar">
+                <input type="text" placeholder="Type your question..."
+                onkeydown="if(event.key==='Enter'){sendMessage('student')}">
+                <button onclick="sendMessage('student')">➤</button>
+            </div>
         </div>
-
-        <!-- Scrollable Chat Container -->
-        <div class="chat-container" id="student-chat">
-            <div class="chat-ai">Hi! Batao, kya padhna hai aaj?</div>
-        </div>
-
-        <!-- Input Bar -->
-        <div class="input-bar">
-            <input type="text" placeholder="Type your question..."
-            onkeydown="if(event.key==='Enter'){sendMessage('student')}">
-            <button onclick="sendMessage('student')">➤</button>
-        </div>
-    </div>
     </section>
 
     <!-- CREATOR HUB -->
-   <section id="creator" class="hub">
-    <div class="panel">
-        <!-- Hub Header -->
-        <div class="hub-header">
-            <span>🎨 Creator Mode</span>
-            <button onclick="clearChat('creator')">Clear</button>
+    <section id="creator" class="hub">
+        <div class="panel">
+            <div class="hub-header">
+                <span>🎨 Creator Mode</span>
+                <button onclick="clearChat('creator')">Clear</button>
+            </div>
+            <div class="chat-container" id="creator-chat">
+                <div class="chat-ai">Hey Creator! Kaunsa content banana hai aaj?</div>
+            </div>
+            <div class="input-bar">
+                <input type="text" placeholder="Type your creative idea..."
+                onkeydown="if(event.key==='Enter'){sendMessage('creator')}">
+                <button onclick="sendMessage('creator')">➤</button>
+            </div>
         </div>
-
-        <!-- Scrollable Chat Container -->
-        <div class="chat-container" id="creator-chat">
-            <div class="chat-ai">Hey Creator! Kaunsa content banana hai aaj?</div>
-        </div>
-
-        <!-- Input Bar -->
-        <div class="input-bar">
-            <input type="text" placeholder="Type your creative idea..."
-            onkeydown="if(event.key==='Enter'){sendMessage('creator')}">
-            <button onclick="sendMessage('creator')">➤</button>
-        </div>
-    </div>
-   </section> 
+    </section>
 
     <!-- INSIGHT HUB -->
     <section id="insight" class="hub">
-    <div class="panel">
-        <!-- Hub Header -->
-        <div class="hub-header">
-            <span>📊 Insight Mode</span>
-            <button onclick="clearChat('insight')">Clear</button>
+        <div class="panel">
+            <div class="hub-header">
+                <span>📊 Insight Mode</span>
+                <button onclick="clearChat('insight')">Clear</button>
+            </div>
+            <div class="chat-container" id="insight-chat">
+                <div class="chat-ai">Interesting question 🤔, data ke hisaab se result nikalta hai...</div>
+            </div>
+            <div class="input-bar">
+                <input type="text" placeholder="Ask for analysis..."
+                onkeydown="if(event.key==='Enter'){sendMessage('insight')}">
+                <button onclick="sendMessage('insight')">➤</button>
+            </div>
         </div>
-
-        <!-- Scrollable Chat Container -->
-        <div class="chat-container" id="insight-chat">
-            <div class="chat-ai">Interesting question 🤔, data ke hisaab se result nikalta hai...</div>
-        </div>
-
-        <!-- Input Bar -->
-        <div class="input-bar">
-            <input type="text" placeholder="Ask for analysis..."
-            onkeydown="if(event.key==='Enter'){sendMessage('insight')}">
-            <button onclick="sendMessage('insight')">➤</button>
-        </div>
-    </div>
     </section>
 
     <!-- LAB HUB -->
-  <section id="lab" class="hub">
-    <div class="panel">
-        <!-- Hub Header -->
-        <div class="hub-header">
-            <span>🧪 Lab Mode</span>
-            <button onclick="clearChat('lab')">Clear</button>
+    <section id="lab" class="hub">
+        <div class="panel">
+            <div class="hub-header">
+                <span>🧪 Lab Mode</span>
+                <button onclick="clearChat('lab')">Clear</button>
+            </div>
+            <div class="chat-container" id="lab-chat">
+                <div class="chat-ai">Lab ready 🧪, experiment ke parameters set kar raha hoon...</div>
+            </div>
+            <div class="input-bar">
+                <input type="text" placeholder="Type your experiment..."
+                onkeydown="if(event.key==='Enter'){sendMessage('lab')}">
+                <button onclick="sendMessage('lab')">➤</button>
+            </div>
         </div>
-
-        <!-- Scrollable Chat Container -->
-        <div class="chat-container" id="lab-chat">
-            <div class="chat-ai">Lab ready 🧪, experiment ke parameters set kar raha hoon...</div>
-        </div>
-
-        <!-- Input Bar -->
-        <div class="input-bar">
-            <input type="text" placeholder="Type your experiment..."
-            onkeydown="if(event.key==='Enter'){sendMessage('lab')}">
-            <button onclick="sendMessage('lab')">➤</button>
-        </div>
-    </div>
-  </section>  
+    </section>
+</main>
 
 <!-- MOBILE NAV -->
 <nav class="mobile-nav">
@@ -175,4 +156,4 @@
 
 <script src="script.js"></script>
 </body>
-    </html>
+                        </html>
