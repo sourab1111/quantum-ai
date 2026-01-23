@@ -251,3 +251,14 @@ main{
   height:calc(100vh - 58px);
   overflow:hidden;
                                               }
+header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  z-index: 999;
+}
+
+/* VERY IMPORTANT */
+main{
+  padding-top: 70px; /* header ke niche space */
+}
